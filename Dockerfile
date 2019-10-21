@@ -7,6 +7,6 @@
   FROM alpine
   WORKDIR /app
   RUN apk add --no-cache --update nodejs nodejs-npm
-  COPY --from=builder //app/node_modules ./node_modules
+  COPY --from=builder /app/node_modules ./node_modules
   COPY . .
   CMD ["npm", "start"]
