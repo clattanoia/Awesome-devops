@@ -10,5 +10,5 @@ services:
 script:
   # - npm run build
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker build -t clattanoia/yacnlee:latest .
-  - docker push clattanoia/yacnlee:latest
+  - docker build -t clattanoia/devops:latest .
+  - docker push clattanoia/devops:latest
