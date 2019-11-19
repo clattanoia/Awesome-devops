@@ -17,7 +17,8 @@ addons:
   ssh_known_hosts:
     - 47.92.89.136
 before_install:
-  - openssl aes-256-cbc -K $encrypted_9a23470cc66b_key -iv $encrypted_9a23470cc66b_iv -in id_rsa.enc -out ~\/.ssh/id_rsa -d
+  - openssl aes-256-cbc -K $encrypted_9a23470cc66b_key -iv $encrypted_9a23470cc66b_iv
+    -in id_rsa.enc -out ~\/.ssh/id_rsa -d
 after_success:
   - chmod 600 ~/.ssh/id_rsa
-  - ssh travis@47.92.89.136 -o StrictHostKeyChecking=no 'docker run -d --name demo -p 8080:3000 clattanoia/devops:latest'
+  - ssh travis@47.92.89.136 -o StrictHostKeyChecking=no 'cd ~/Awesome-devops && git pull'
