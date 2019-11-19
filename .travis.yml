@@ -10,6 +10,9 @@ script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t clattanoia/devops:latest .
   - docker push clattanoia/devops:latest
+env:
+  global:
+    secure: *********
 addons:
   ssh_known_hosts:
     - 47.92.89.136
