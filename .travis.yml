@@ -21,5 +21,4 @@ before_install:
     -in id_rsa.enc -out ~\/.ssh/id_rsa -d
 after_success:
   - chmod 600 ~/.ssh/id_rsa
-  - ssh travis@47.92.89.136 -o StrictHostKeyChecking=no 'docker run -d --name demo -p 8080:3000 clattanoia/devops:latest
-'
+  - ssh travis@47.92.89.136 -o StrictHostKeyChecking=no 'docker run -d --name demo -p 8080:3000 clattanoia/devops:latest'
