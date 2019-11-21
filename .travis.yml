@@ -6,7 +6,8 @@ branchs:
     - master
 services:
   - docker
-global:
+env:
+  global:
     - IMAGE_NAME=clattanoia/devops:latest
     - CONTAINER_NAME=devops
 script:
