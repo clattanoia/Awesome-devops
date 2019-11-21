@@ -6,7 +6,8 @@ branchs:
     - master
 services:
   - docker
-global:
+env:
+  global:
     - IMAGE_NAME=clattanoia/devops:latest
 script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
