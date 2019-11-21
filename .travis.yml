@@ -9,6 +9,7 @@ services:
 env:
   global:
     - IMAGE_NAME=clattanoia/devops:latest
+    - CONTAINER_NAME:devops
 script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t $IMAGE_NAME .
@@ -24,7 +25,7 @@ after_success:
   - ssh travis@47.92.89.136 
     'cd ~/Awesome-devops && 
     git pull && 
-    docker pull clattanoia/devops:latest && 
-    docker stop devops || true && 
-    docker rm devops || true && 
-    docker run -d --name devops -p 8080:3000 clattanoia/devops:latest'
+    docker pull ${IMAGE_NAME} && 
+    docker stop ${CONTAINER_NAME} || true && 
+    docker rm ${CONTAINER_NAME} || true && 
+    docker run -d --name devops -p 8080:3000 ${IMAGE_NAME}'
