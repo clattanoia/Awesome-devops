@@ -1,22 +1,21 @@
 language: node_js
 node_js:
-- '12'
+  - '12'
 branchs:
   only:
-  - master
+    - master
 services:
-- docker
+  - docker
 script:
-- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-- docker build -t clattanoia/devops:latest .
-- docker push clattanoia/devops:latest
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker build -t clattanoia/devops:latest .
+  - docker push clattanoia/devops:latest
 addons:
   ssh_known_hosts:
-  - 47.92.89.136
+    - 47.92.89.136
 before_install:
-- openssl aes-256-cbc -K $encrypted_9a23470cc66b_key -iv $encrypted_9a23470cc66b_iv
-  -in id_rsa.enc -out ~/.ssh/id_rsa -d
-- chmod 600 ~/.ssh/id_rsa
+  - openssl aes-256-cbc -K $encrypted_9a23470cc66b_key -iv $encrypted_9a23470cc66b_iv
+    -in id_rsa.enc -out ~/.ssh/id_rsa -d
+  - chmod 600 ~/.ssh/id_rsa
 after_success:
-- ssh travis@47.92.89.136 -o StrictHostKeyChecking=no 'cd ~/Awesome-devops && git
-  pull'
+  - ssh travis@47.92.89.136 'cd ~/Awesome-devops && git pull'
