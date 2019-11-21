@@ -6,10 +6,8 @@ branchs:
     - master
 services:
   - docker
-env:
-  global:
+global:
     - IMAGE_NAME=clattanoia/devops:latest
-    - CONTAINER_NAME=devops
 script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t $IMAGE_NAME .
@@ -22,4 +20,4 @@ before_install:
     -in id_rsa.enc -out ~/.ssh/id_rsa -d
   - chmod 600 ~/.ssh/id_rsa
 after_success:
-  - ssh travis@47.92.89.136 'cd ~/Awesome-devops && git pull && docker pull $IMAGE_NAME && docker stop $CONTAINER_NAME && docker rm $CONTAINER_NAME && docker run -d --name $CONTAINER_NAME -p 8080:3000 $IMAGE_NAME'
+  - ssh travis@47.92.89.136 'cd ~/Awesome-devops && git pull && docker pull clattanoia/devops:latest && docker stop devops && docker rm devops && docker run -d --name devops -p 8080:3000 clattanoia/devops:latest'
