@@ -21,4 +21,4 @@ before_install:
     -in id_rsa.enc -out ~/.ssh/id_rsa -d
   - chmod 600 ~/.ssh/id_rsa
 after_success:
-  - ssh travis@47.92.89.136 'cd ~/Awesome-devops && git pull && chmod a+x docker_build.sh && ./docker_build.sh'
+  - ssh travis@47.92.89.136 'cd ~/Awesome-devops && git pull && docker pull clattanoia/devops:latest && docker stop devops || true && docker rm devops || true && docker run -d --name devops -p 8080:3000 clattanoia/devops:latest'
