@@ -18,5 +18,4 @@ before_install:
     -in id_rsa.enc -out ~/.ssh/id_rsa -d
   - chmod 600 ~/.ssh/id_rsa
 after_success:
-  - ssh travis@47.92.89.136 'cd ~/Awesome-devops && git pull && docker pull clattanoia/devops && docker run -d --name devops -p 8080:3000 clattanoia/devops
-'
+  - ssh travis@47.92.89.136 'cd ~/Awesome-devops && git pull && docker pull clattanoia/devops && docker run -d --name devops -p 8080:3000 clattanoia/devops'
