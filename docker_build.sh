@@ -1,4 +1,5 @@
 #!/bin/sh
+
 IMAGE_NAME="clattanoia/devops:latest"
 CONTAINER_NAME="devops"
 
