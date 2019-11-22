@@ -3,4 +3,5 @@ build
 .travis.yml
 .gitignore
 id_rsa.enc
+docker_build.sh
 README.md
