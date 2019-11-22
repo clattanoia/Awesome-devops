@@ -24,7 +24,5 @@ after_success:
   - ssh travis@47.92.89.136 
     'cd ~/Awesome-devops && 
     git pull && 
-    docker pull clattanoia/devops:latest && 
-    docker stop devops || true && 
-    docker rm devops || true && 
-    docker run -d --name devops -p 8080:3000 clattanoia/devops:latest'
+    chmod +x docker_build.sh && 
+    ./docker_build.sh'
