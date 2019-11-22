@@ -23,6 +23,7 @@ before_install:
 after_success:
   - ssh travis@47.92.89.136 
     'cd ~/Awesome-devops && 
+    git checkout . &&
     git pull && 
     chmod +x docker_build.sh && 
     ./docker_build.sh'
