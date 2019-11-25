@@ -21,7 +21,7 @@ before_install:
     -in id_rsa.enc -out ~/.ssh/id_rsa -d
   - chmod 600 ~/.ssh/id_rsa
 after_success:
-  - ssh travis@47.92.89.136 
+  - ssh travis@47.92.89.136  -o StrictHostKeyChecking=no 
     'cd ~/Awesome-devops && 
     git checkout . &&
     git pull && 
